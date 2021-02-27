@@ -1,0 +1,44 @@
+Primary
+    : ID
+    | LP Or RP
+
+Belongs
+    : Primary Belongs1
+Belongs1
+    : IN Primary Belongs1
+    | NOT_IN Primary Belongs1
+    | EMPTY
+
+Not
+    : Belongs
+    | NOT Not
+
+And
+    : Not And1
+And1
+    : AND Not And1
+    | EMPTY
+
+Xor
+    : And Xor1
+Xor1
+    : XOR And Xor1
+    | EMPTY
+
+Or
+    : Xor Or1
+Or1
+    : OR Xor Or1
+    : EMPTY
+
+
+ID = [a-zA-Z]
+LP = '('
+PR = ')'
+IN = 'in'
+NOT_IN = 'not in'
+NOT = 'not'
+AND = 'and'
+XOR = 'xor'
+OR = 'or'
+EMPTY = ''
